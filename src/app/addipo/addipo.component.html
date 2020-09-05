@@ -1,4 +1,38 @@
 <app-adminheader></app-adminheader>
 <div class="commonmain">
-<p>addipo works!</p>
+  <h3>Add IPO</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Company name</label>
+      <input type="text" class="form-control" id="companyName" required [(ngModel)]="ipo.companyName" name="ipo">
+    </div>
+    
+    <div class="form-group">
+      <label for="name">Stock Exchange</label>
+      <input type="text" class="form-control" id="stockExchange" required [(ngModel)]="ipo.stockExchange" name="stockExchange">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Price per share</label>
+      <input type="text" class="form-control" id="pricePerShare" required [(ngModel)]="ipo.pricePerShare" name="pricePerShare">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Total Share</label>
+        <input type="text" class="form-control" id="totalShare" required [(ngModel)]="ipo.totalShare" name="totalShare">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Open DateTime</label>
+        <input type="text" class="form-control" id="openDateTime" required [(ngModel)]="ipo.openDateTime" name="openDateTime">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Remarks</label>
+        <input type="text" class="form-control" id="remarks" required [(ngModel)]="ipo.remarks" name="remarks">
+      </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
 </div>
