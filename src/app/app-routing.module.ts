@@ -21,6 +21,7 @@ import {UserlandingComponent} from '../app/userlanding/userlanding.component';
 import {AdminlandingComponent} from '../app/adminlanding/adminlanding.component';
 import {RendermapComponent} from '../app/rendermap/rendermap.component';
 
+
 const routes: Routes = [
   {
       path: 'login',
@@ -103,6 +104,12 @@ component:ImportdataComponent,
 {
   path: 'rendermap',
   component: RendermapComponent,
+},
+{ path: 'ipoList', 
+component : UpdateipoComponent
+},
+  { path: 'ipo', 
+  component : AddipoComponent
 }
 ];
 @NgModule({
