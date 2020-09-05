@@ -1,0 +1,35 @@
+<app-adminheader></app-adminheader>
+<div class="commonmain">
+
+    <div *ngIf="currentFile" class="progress">
+        <div
+          class="progress-bar progress-bar-info progress-bar-striped"
+          role="progressbar"
+          attr.aria-valuenow="{{ progress }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: progress + '%' }"
+        >
+          {{ progress }}% 
+        </div>
+      </div>
+      
+      <label class="btn btn-default">
+        <input type="file" (change)="selectFile($event)" />
+      </label>
+      
+      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+        Upload
+      </button>
+      
+      
+      <div class="alert alert-light" role="alert"><b>{{message[0]}}</b></div>
+      <div class="alert alert-light" role="alert"><b>{{message[1]}}</b></div>
+      <div class="alert alert-light" role="alert"><b>{{message[2]}}</b></div>
+      <div class="alert alert-light" role="alert"><b>{{message[3]}}</b></div>
+      <div class="alert alert-light" role="alert"><b>{{message[4]}}</b></div>
+      
+      <div class="card">
+        
+      </div>
+</div>
