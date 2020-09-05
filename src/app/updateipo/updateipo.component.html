@@ -1,4 +1,32 @@
 <app-adminheader></app-adminheader>
 <div class="commonmain">
-<p>updateipo works!</p>
-</div>
+    <div class="card my-5">
+        <div class="card-body">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ipoID</th>
+                <th scope="col">companyName</th>
+                <th scope="col">stockExchange</th>
+                <th scope="col">pricePerShare</th>
+                <th scope="col">totalShare</th>
+                <th scope="col">openDateTime</th>
+                <th scope="col">remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ipo of ipoList">
+                <td>{{ ipo.ipoID}}</td>
+                <td>{{ ipo.companyName}}</td>
+                <td>{{ ipo.stockExchange }}</td>
+                <td>{{ ipo.pricePerShare }}</td>
+                <td>{{ ipo.numberOfShares }}</td>
+                <td>{{ ipo.openDateTime }}</td>
+                <td>{{ ipo.remarks }}</td>
+                <td><button (click)="deleteIpo(ipo.ipoID)" class="btn btn-danger">Delete</button>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div></div>
