@@ -1,58 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import {LoginserviceService} from '../loginservice.service';
-import { IpoService } from './../ipo.service';
-import { Ipo } from './../ipo';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-@Component({
-  selector: 'app-updateipo',
-  templateUrl: './updateipo.component.html',
-  styleUrls: ['./updateipo.component.css']
-})
-export class UpdateipoComponent implements OnInit {
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-  islogged:string;
-  ipoList :Ipo[];
-  id: number;
-  ipo : Ipo;
+import { UpdateipoComponent } from './updateipo.component';
 
-  constructor(private loginserviceService: LoginserviceService,
-    private router: Router,
-    private _router : Router ,
-     private ipoService: IpoService){
-  }
+describe('UpdateipoComponent', () => {
+  let component: UpdateipoComponent;
+  let fixture: ComponentFixture<UpdateipoComponent>;
 
-  getLoginDetails(): string {
-    this.islogged= this.loginserviceService.currentUserValue();
-    return this.islogged;
-  }
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ UpdateipoComponent ]
+    })
+    .compileComponents();
+  }));
 
-  ngOnInit() {
-    this.islogged=this.getLoginDetails();
-    if(this.islogged!="admin" ){
-      this.loginserviceService.resetvalue();
-      this.router.navigate(['/login']);
-      return;
-      this.reloadData();
-    }
-  }
-  deleteIpo(id: number) {
-    this.ipoService.deleteIpo(id)
-      .subscribe(
-        response => {
-          
-          this.reloadData();
-          
-        })
+  beforeEach(() => {
+    fixture = TestBed.createComponent(UpdateipoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-      }
-      gotoIpoList() {
-        this._router.navigate(['/ipoList']);
-      
-      }
-      reloadData() {
-        this.ipoService.findAll().subscribe(data => {
-          this.ipoList = data;
-        });
-      }
-
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
