@@ -1,1 +1,41 @@
-<p>rendermap works!</p>
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <form style="text-align:center" [formGroup]="graphtypeForm" (ngSubmit)="onSubmit()">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  
+      <select formControlName="name">
+        <option disabled selected>Choose graph type</option>
+        <!-- <option *ngFor="let graph of graphtype">{{graph}}</option> -->
+        <option selected>line</option>
+        <option >bar</option>
+      </select>
+      <select formControlName="number">
+          <option disabled >Choose graph number</option>
+          <option selected>1</option>
+          <option >2</option>
+      </select>
+      <button>Submit</button>
+    </form>
+    <div style="text-align:center" >
+      <button type="button" 
+      (click)="export()" 
+      class="btn btn-danger">
+        Export Data
+      </button>
+    </div>
+</div>
+
+
+
+<div style="text-align:center">
+  <!-- <h4>Minimum- {{min1}}  Maximum- {{max1}}</h4> -->
+  <canvas id="chart1" width="100" height="30"></canvas>
+  <!-- <h4>Minimum- {{min2}}  Maximum- {{max2}}</h4> -->
+  <canvas id="chart2" width="100" height="30"></canvas>
+</div>
+
+  
+
+
+<router-outlet></router-outlet>
+    
