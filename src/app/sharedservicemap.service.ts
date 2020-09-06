@@ -10,8 +10,8 @@ export class SharedservicemapService {
     invokeEvent: Subject<any> = new Subject(); 
     stockprices1=[];
     stockprices2=[];
-    company1='abc'
-    company2='cdf'
+    company1=''
+    company2=''
     isSamePeriod: boolean = true;
 
   callMethodOfSecondComponent(value) { 
