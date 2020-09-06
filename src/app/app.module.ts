@@ -28,6 +28,7 @@ import { OtheruserComponent } from './otheruser/otheruser.component';
 import { UserlandingComponent } from './userlanding/userlanding.component';
 import { AdminlandingComponent } from './adminlanding/adminlanding.component';
 import { PreloginheaderComponent } from './preloginheader/preloginheader.component';
+import { IpoService } from './ipo.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { PreloginheaderComponent } from './preloginheader/preloginheader.compone
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [IpoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,68 @@
+<html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">  
+   <title>Document</title>
+ </head>
+
+ <body class="bg-light">
+
+
+    <div class="container" style="width:600px">
+      <div style="margin: 20px">
+        <h3 class="text-center py-4">Import Excel</h3>
+        <h6>{{ title }}</h6>
+      </div>
+
+      <app-importdata></app-importdata>
+    </div>
+
+    
+
+    <div class="container">
+      <div class="row py-5 justify-content-center">
+       <div class="col-md-8">
+        
+        <div class="col-md-12 table-responsive" #epltable>
+         <div style="padding-bottom: 10px;padding-top: 10px;">
+          <div class="row">
+           <div class="col-sm-12">
+            <!--<button (click)="exportToExcel()" class="btn btn-success">Click here to download sample excel file</button> -->
+            <a download href="assets/excelfile/sample_stock_data.xlsx">Click here to download sample excel file</a>
+           </div>
+          
+          </div>
+         </div>
+         <table class="table table-bordered">
+          <thead class="thead-dark">
+          <tr>
+           <th>Company_Code</th>
+           <th>Stock_Exchange</th>
+           <th>Price_Per_Share_in_Rs</th>
+           <th>Date</th>
+           <th>Time</th>
+          </tr>
+         </thead>
+
+         <tbody>
+          <tr *ngFor="let stock of stocks">
+           <td align="center">{{stock.Company_Code}}</td>
+           <td align="center">{{stock.Stock_Exchange}}</td>
+           <td align="center">{{stock.Price_Per_Share_in_Rs}}</td>
+           <td align="center">{{stock.Date}}</td>
+           <td align="center">{{stock.Time}}</td>
+          </tr>
+         </tbody>
+        </table>
+
+         
+       </div>
+      </div>
+     </div>
+    </div>
+
+
+  </body>
+</html>
+

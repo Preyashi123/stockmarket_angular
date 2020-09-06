@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Ipo } from '../ipo';
+import { IpoService } from '../ipo.service';
+
+
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-addipo',
   templateUrl: './addipo.component.html',
@@ -8,9 +12,14 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 })
 export class AddipoComponent implements OnInit {
   islogged:string;
+  ipo : Ipo;
+
 
   constructor(private loginserviceService: LoginserviceService,
-    private router: Router){
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private ipoService: IpoService){
+      this.ipo = new Ipo();
   }
 
   getLoginDetails(): string {
@@ -25,6 +34,14 @@ export class AddipoComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
+
+  }
+  onSubmit() {
+    this.ipoService.save(this.ipo).subscribe(result => this.gotoIpoList());
+  }
+  gotoIpoList() {
+    console.log("hello");
+    this.router.navigate(['/ipoList']);
   }
 
 }

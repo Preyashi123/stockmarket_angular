@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
+import { IpoService } from './../ipo.service';
+import { Ipo } from './../ipo';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 @Component({
   selector: 'app-updateipo',
@@ -9,9 +11,14 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 export class UpdateipoComponent implements OnInit {
 
   islogged:string;
+  ipoList :Ipo[];
+  id: number;
+  ipo : Ipo;
 
   constructor(private loginserviceService: LoginserviceService,
-    private router: Router){
+    private router: Router,
+    private _router : Router ,
+     private ipoService: IpoService){
   }
 
   getLoginDetails(): string {
@@ -25,7 +32,27 @@ export class UpdateipoComponent implements OnInit {
       this.loginserviceService.resetvalue();
       this.router.navigate(['/login']);
       return;
+      this.reloadData();
     }
   }
+  deleteIpo(id: number) {
+    this.ipoService.deleteIpo(id)
+      .subscribe(
+        response => {
+          
+          this.reloadData();
+          
+        })
+
+      }
+      gotoIpoList() {
+        this._router.navigate(['/ipoList']);
+      
+      }
+      reloadData() {
+        this.ipoService.findAll().subscribe(data => {
+          this.ipoList = data;
+        });
+      }
 
 }
