@@ -1,47 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import {LoginserviceService} from '../loginservice.service';
-import { Ipo } from '../ipo';
-import { IpoService } from '../ipo.service';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AddipoComponent } from './addipo.component';
 
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
-@Component({
-  selector: 'app-addipo',
-  templateUrl: './addipo.component.html',
-  styleUrls: ['./addipo.component.css']
-})
-export class AddipoComponent implements OnInit {
-  islogged:string;
-  ipo : Ipo;
+describe('AddipoComponent', () => {
+  let component: AddipoComponent;
+  let fixture: ComponentFixture<AddipoComponent>;
 
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ AddipoComponent ]
+    })
+    .compileComponents();
+  }));
 
-  constructor(private loginserviceService: LoginserviceService,
-    private route: ActivatedRoute, 
-    private router: Router, 
-    private ipoService: IpoService){
-      this.ipo = new Ipo();
-  }
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AddipoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  getLoginDetails(): string {
-    this.islogged= this.loginserviceService.currentUserValue();
-    return this.islogged;
-  }
-
-  ngOnInit() {
-    this.islogged=this.getLoginDetails();
-    if(this.islogged!="admin" ){
-      this.loginserviceService.resetvalue();
-      this.router.navigate(['/login']);
-      return;
-    }
-
-  }
-  onSubmit() {
-    this.ipoService.save(this.ipo).subscribe(result => this.gotoIpoList());
-  }
-  gotoIpoList() {
-    console.log("hello");
-    this.router.navigate(['/ipoList']);
-  }
-
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
