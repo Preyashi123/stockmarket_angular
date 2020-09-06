@@ -1,28 +1,36 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div  class="container">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <form style="text-align:center" [formGroup]="graphtypeForm" (ngSubmit)="onSubmit()">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  
-      <select formControlName="name">
-        <option disabled selected>Choose graph type</option>
-        <!-- <option *ngFor="let graph of graphtype">{{graph}}</option> -->
-        <option selected>line</option>
-        <option >bar</option>
-      </select>
-      <select formControlName="number">
-          <option disabled >Choose graph number</option>
-          <option selected>1</option>
-          <option >2</option>
-      </select>
-      <button>Submit</button>
+      <div class="form-group row">
+        <div class="col-4 col-md-2">
+          <select class="browser-default custom-select custom-select-lg mb-3" formControlName="name">
+            <option disabled selected>Choose graph type</option>
+            <!-- <option *ngFor="let graph of graphtype">{{graph}}</option> -->
+            <option>line</option>
+            <option >bar</option>
+          </select>
+        </div>  
+        <div class="col-4 col-md-2">
+          <select class="browser-default custom-select custom-select-lg mb-3" formControlName="number">
+              <option disabled selected  >Choose graph number</option>
+              <option >1</option>
+              <option >2</option>
+          </select>
+        </div>
+        <div class="col-5 col-md-2">
+          <button  class="btn btn-danger">Submit</button>
+        </div>
+      </div>
     </form>
-    <div style="text-align:center" >
-      <button type="button" 
-      (click)="export()" 
-      class="btn btn-danger">
-        Export Data
-      </button>
-    </div>
+      <div>
+        <button type="button" 
+        (click)="export()" 
+        class="btn btn-danger">
+          Export Data
+        </button>
+      </div>
+
 </div>
 
 
@@ -31,7 +39,9 @@
   <!-- <h4>Minimum- {{min1}}  Maximum- {{max1}}</h4> -->
   <canvas id="chart1" width="100" height="30"></canvas>
   <!-- <h4>Minimum- {{min2}}  Maximum- {{max2}}</h4> -->
-  <canvas id="chart2" width="100" height="30"></canvas>
+  <div >
+    <canvas *ngIf = "showSecondChart" id="chart2" width="100" height="30"></canvas>
+  </div>
 </div>
 
   

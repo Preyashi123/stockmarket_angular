@@ -1,0 +1,17 @@
+#formdiv{
+    display: inline-block;
+}
+
+#sectorform {
+    border-radius:0 !important;
+    padding-top: 1rem;
+    margin: 0 auto;
+}
+
+#plus{
+    margin-left: 18em;
+}
+
+form > fieldset > legend {
+    font-size:120%;
+}
